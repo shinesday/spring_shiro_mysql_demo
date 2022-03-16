@@ -1,5 +1,8 @@
-package com.example.shiro_mysql_integrate;
+package com.example.shiro_mysql_integrate.model;
 
+import com.example.shiro_mysql_integrate.model.Role;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,6 +32,10 @@ public class User {
     this.id = id;
     this.username = username;
     this.password = password;
+  }
+
+  public User() {
+    
   }
 
   public Long getId() {
@@ -61,5 +68,11 @@ public class User {
 
   public void setRole(Role role) {
     this.role = role;
+  }
+
+  public Set<String> getRoleNames() {
+    Set<String> roleNames = new HashSet<>();
+    roleNames.add(getRole().getName());
+    return roleNames;
   }
 }
